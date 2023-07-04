@@ -20,7 +20,13 @@ class RecipesController < ApplicationController
             render 'new'
         end
     end
-    
+
+    def destroy
+        @recipe = Recipe.find(params[:id])
+        @recipe.destroy
+        redirect_to recipes_path, notice: 'Recipe was successfully destroyed'
+    end
+
     private
 
   def post_params

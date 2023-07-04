@@ -2,7 +2,11 @@
   <div class="recipe">
     <div class="title-remove">
         <h2><%= link_to recipe.name, recipe %></h2>
-        <p><%= recipe.public %></p>
+        <% if can? :destroy, recipe %>
+            <%= form_with url: recipe_path(recipe) , method: :delete do %>
+                <%= submit_tag 'Remove' %>
+            <% end %>
+        <% end %>
     </div>
     <p><%= recipe.description %></p>
     
@@ -26,7 +30,7 @@
         </p>
         <p>
             <%= f.label :description, "Description" %>
-            <%= f.text_field :description, class: "recipe-field" %>
+            <%= f.text_area :description, class: "recipe-field" %>
         </p>
         <p>
             <%= f.label :public, "Public" %>
