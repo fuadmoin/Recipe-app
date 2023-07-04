@@ -1,0 +1,39 @@
+<% @user.recipes.each do |recipe| %>
+  <div class="recipe">
+    <div class="title-remove">
+        <h2><%= link_to recipe.name, recipe %></h2>
+        <p><%= recipe.public %></p>
+    </div>
+    <p><%= recipe.description %></p>
+    
+  </div>
+<% end %>
+
+<div class= "recipe-container">
+<h2 class="recipe-header">Create a new recipe</h2>
+    <%= form_for([ @user.recipes.build]) do |f|%>
+        <p>
+            <%= f.label :name, "Name of the recipe"%>
+            <%= f.text_field :name, class: "recipe-field" %>
+        </p>
+        <p>
+            <%= f.label :preparation_time, "Preparation time(minutes)"%>
+            <%= f.number_field :preparation_time, class: "recipe-field" %>
+        </p>
+        <p>
+            <%= f.label :cooking_time, "Cooking time(minutes)" %>
+            <%= f.number_field :cooking_time, class: "recipe-field" %>
+        </p>
+        <p>
+            <%= f.label :description, "Description" %>
+            <%= f.text_field :description, class: "recipe-field" %>
+        </p>
+        <p>
+            <%= f.label :public, "Public" %>
+            <%= f.check_box :public,  class: "check" %>
+        </p>
+        <p>
+            <%= f.submit "Create Recipe", class: "btn" %>
+        </p>
+    <% end %>
+</div>

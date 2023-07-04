@@ -1,0 +1,36 @@
+.recipe{
+    margin: 2rem;
+    border: 2px solid black;
+    padding: 1rem;
+    display: flex;
+}
+.title-remove{
+    min-width: 10rem;
+    margin-right: 2rem;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.recipe-container{
+    padding: 4rem;
+}
+
+.recipe-header{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+}
+.recipe-container label{
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 17rem;
+}
+.recipe-field{
+    border: 2px solid black;
+}
+
+.check{
+    margin-left: -13rem;
+}
