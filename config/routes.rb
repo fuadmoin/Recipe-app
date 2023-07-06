@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root "recipes#index"
   resources :users, only: %i[index]
-  resources :recipes, only: %i[index show new create edit update destroy]
+  resources :recipes, only: %i[index show new create edit update destroy] do
+    member do
+      patch :update_public_status
+    end
+  end
 end
