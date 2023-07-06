@@ -11,4 +11,6 @@ Rails.application.routes.draw do
       patch :update_public_status
     end
   end
+
+  get '/public_recipes', to: 'recipes#public_recipes'
 end

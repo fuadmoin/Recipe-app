@@ -11,6 +11,10 @@
     font-weight: bold;
 }
 
+.title-remove h2 {
+    font-size: x-large;
+}
+
 .recipe-container{
     padding: 4rem;
 }
@@ -35,6 +39,8 @@
 .check{
     margin-left: -13rem;
 }
+
+/* Recipe Details */
 
 .details-header{
     font-size: 2rem;
@@ -154,4 +160,22 @@
 
   .ingredient-table .value {
     width: 15%;
+  }
+
+  /* Public Recipes */
+  .author {
+    font-style: italic;
+  }
+
+  .btn-remove{
+    border: solid 1px rgb(148, 111, 111);
+    cursor: pointer;
+    font-size: medium;
+    padding: 1px;
+    color: rgb(223, 217, 217);
+    background-color: red !important; 
+  }
+
+  .btn-private{
+    background-color: cadetblue !important;
   }

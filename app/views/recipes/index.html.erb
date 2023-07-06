@@ -4,7 +4,7 @@
         <h2><%= link_to recipe.name, recipe %></h2>
         <% if can? :destroy, recipe %>
             <%= form_with url: recipe_path(recipe) , method: :delete do %>
-                <%= submit_tag 'Remove' %>
+                <%= submit_tag 'Remove', class: "btn-remove" %>
             <% end %>
         <% end %>
     </div>

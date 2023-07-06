@@ -28,6 +28,10 @@ class RecipesController < ApplicationController
         redirect_to @recipe
     end
 
+    def public_recipes
+        @recipes = Recipe.where(public: true)
+    end
+
     def destroy
         @recipe = Recipe.find(params[:id])
         @recipe.destroy
