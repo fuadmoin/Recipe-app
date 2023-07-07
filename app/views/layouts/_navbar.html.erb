@@ -14,9 +14,9 @@
           <%= link_to 'Public recipes', public_recipes_path %>
         </li>
         <li>
-          <%= link_to 'SIGN OUT', root_path %>
+          <%= link_to 'SIGN OUT', destroy_user_session_path, method: :get  %>
         </li>
       </ul>
-    </div>
+    </div> 
   </div>
 </nav>

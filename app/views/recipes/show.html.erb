@@ -3,12 +3,14 @@
 <div class="details-container">
 <div class="preparation-public">
 <p>Preparation time:<strong> <%= @recipe.preparation_time%>  minutes </strong></p>
-<%= form_with model: @recipe, url: update_public_status_recipe_path(@recipe), method: :patch do |f| %>
-   <small class="public-switch">Public</small>
-  <label class="switch"> 
-    <%= f.check_box :public, onchange: 'this.form.submit()' %>
-    <span class="slider round"></span>
-  </label>
+<%if can? :destroy, @recipe%>
+    <%= form_with model: @recipe, url: update_public_status_recipe_path(@recipe), method: :patch do |f| %>
+    <small class="public-switch">Public</small>
+    <label class="switch"> 
+        <%= f.check_box :public, onchange: 'this.form.submit()' %>
+        <span class="slider round"></span>
+    </label>
+    <% end %>
 <% end %>
 </div> <br>
 <p>Cooking time: <strong><%= @recipe.cooking_time%> minutes </strong></p> <br>
