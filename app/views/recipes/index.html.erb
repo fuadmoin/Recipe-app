@@ -1,43 +1,59 @@
-<% @user.recipes.each do |recipe| %>
-  <div class="recipe">
-    <div class="title-remove">
-        <h2><%= link_to recipe.name, recipe %></h2>
-        <% if can? :destroy, recipe %>
-            <%= form_with url: recipe_path(recipe) , method: :delete do %>
-                <%= submit_tag 'Remove', class: "btn-remove" %>
-            <% end %>
-        <% end %>
+<section class="bg-emerald-500 pt-10 px-20">
+  <% @user.recipes.each do |recipe| %>
+    <div class="recipe  mb-4">
+      <div class="title-remove">
+          <h2><%= link_to recipe.name, recipe %></h2>
+          <% if can? :destroy, recipe %>
+              <%= form_with url: recipe_path(recipe) , method: :delete do %>
+                  <%= submit_tag 'Remove', class: "btn-remove mt-3 px-3 py-1 rounded-md text-white" %>
+              <% end %>
+          <% end %>
+      </div>
+      <p><%= recipe.description %></p>
+      
     </div>
-    <p><%= recipe.description %></p>
-    
+  <% end %>
+  
+  <div class= "recipe-container container">
+  <h2 class="recipe-header flex justify-center">Create a new recipe</h2>
+    <div class="w-3/6">
+      <%= form_for([ @user.recipes.build]) do |f|%>
+          <div class="row mt-3">
+              <div class="col-auto">
+                <%= f.label :name, "Name of the recipe"%>
+              </div>
+              <div class="col-auto">
+                <%= f.text_field :name, class: "recipe-field form-control" %>
+              </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-auto">
+                <%= f.label :preparation_time, "Preparation time(minutes)"%>
+              </div>
+              <div class="col-auto">
+                <%= f.number_field :preparation_time, class: "recipe-field form-control" %>
+              </div>
+          </div>
+          <div class="row mt-3">
+              <div class="col-auto">
+                <%= f.label :cooking_time, "Cooking time(minutes)" %>
+              </div>
+              <div class="col-auto">
+                <%= f.number_field :cooking_time, class: "recipe-field form-control" %>
+              </div>
+          </div>
+          <div class="9/12">
+              <%= f.label :description, "Description" %>
+              <%= f.text_area :description, class: "recipe-field form-control me-4" %>
+          </div>
+          <div class="mt-3">
+              <%= f.label :public, "Public" %>
+              <%= f.check_box :public,  class: "check form-check-input" %>
+          </div>
+          <p>
+              <%= f.submit "Create Recipe", class: "btn" %>
+          </p>
+      <% end %>
+    </div>
   </div>
-<% end %>
-
-<div class= "recipe-container">
-<h2 class="recipe-header">Create a new recipe</h2>
-    <%= form_for([ @user.recipes.build]) do |f|%>
-        <p>
-            <%= f.label :name, "Name of the recipe"%>
-            <%= f.text_field :name, class: "recipe-field" %>
-        </p>
-        <p>
-            <%= f.label :preparation_time, "Preparation time(minutes)"%>
-            <%= f.number_field :preparation_time, class: "recipe-field" %>
-        </p>
-        <p>
-            <%= f.label :cooking_time, "Cooking time(minutes)" %>
-            <%= f.number_field :cooking_time, class: "recipe-field" %>
-        </p>
-        <p>
-            <%= f.label :description, "Description" %>
-            <%= f.text_area :description, class: "recipe-field" %>
-        </p>
-        <p>
-            <%= f.label :public, "Public" %>
-            <%= f.check_box :public,  class: "check" %>
-        </p>
-        <p>
-            <%= f.submit "Create Recipe", class: "btn" %>
-        </p>
-    <% end %>
-</div>
+</section>
