@@ -1,0 +1,7 @@
+<%= form_with(model: [@recipe, @food_recipe], url: recipe_food_recipe_path(@recipe, @food_recipe), method: :patch) do |f| %>
+  <div>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+  <%= f.submit %>
+<% end %>

@@ -2,9 +2,11 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('turbo:load', function() {
     const foodForm = document.querySelector('#food-form');
     const addFoodButton = document.querySelector('#add-food-button');
+    const ingredientsForm = document.querySelector('#ingredients');
+    const addIngredientButton = document.querySelector('#ingredient');
   
     if (foodForm && addFoodButton) {
       addFoodButton.addEventListener('click', function() {
@@ -14,6 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         foodForm.style.display = 'block';
       });
+    }
+
+    if (ingredientsForm && addIngredientButton) {
+        addIngredientButton.addEventListener('click', function() {
+            if (ingredientsForm.style.display === 'block') {
+            ingredientsForm.style.display = 'none';
+            return;
+            }
+            ingredientsForm.style.display = 'block';
+        });
     }
   });
   
