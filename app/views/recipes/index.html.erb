@@ -1,25 +1,31 @@
 <%= render 'layouts/navbar' %>
-<section class="bg-emerald-500 pt-10 px-20">
+<section class="bg-emerald-500 min-h-screen pt-10 px-20 container">
   <% @user.recipes.each do |recipe| %>
-    <div class="recipe  mb-4">
-      <div class="title-remove">
-          <h2><%= link_to recipe.name, recipe %></h2>
+    <div class="card mb-3 text-lg bg-emerald-300">
+      <div class="card-body flex gap-5">
+        <div class="">
+          <h2 class="card-title font-bold">
+            <%= link_to recipe.name, recipe %>
+          </h2>
           <% if can? :destroy, recipe %>
-              <%= form_with url: recipe_path(recipe) , method: :delete do %>
-                  <%= submit_tag 'Remove', class: "btn-remove mt-3 px-3 py-1 rounded-md text-white" %>
-              <% end %>
+            <%= form_with url: recipe_path(recipe) , method: :delete do %>
+                <%= submit_tag 'Remove', class: "btn btn-remove btn-danger bg-red-700 mt-3 px-3 py-1 rounded-md text-white" %>
+            <% end %>
           <% end %>
+        </div>
+        <p class="card-text">
+          <%= recipe.description %>
+        </p>
       </div>
-      <p><%= recipe.description %></p>
-      
     </div>
   <% end %>
   
   <div class= "recipe-container container">
   <h2 class="recipe-header flex justify-center">Create a new recipe</h2>
-    <div class="w-3/6">
+    <div class="bg-emerald-300 px-10 py-4 rounded-md flex flex-col justify-center items-center">
       <%= form_for([ @user.recipes.build]) do |f|%>
-          <div class="row mt-3">
+        <div>
+          <div class="row mt-5">
               <div class="col-auto">
                 <%= f.label :name, "Name of the recipe"%>
               </div>
@@ -51,9 +57,10 @@
               <%= f.label :public, "Public" %>
               <%= f.check_box :public,  class: "check form-check-input" %>
           </div>
-          <p>
-              <%= f.submit "Create Recipe", class: "btn" %>
+          <p class="flex justify-end">
+              <%= f.submit "Create Recipe", class: "btn bg-emerald-800 text-white" %>
           </p>
+        </div>
       <% end %>
     </div>
   </div>
