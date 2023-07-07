@@ -12,13 +12,12 @@
 <% end %>
 </div> <br>
 <p>Cooking time: <strong><%= @recipe.cooking_time%> minutes </strong></p> <br>
-<p><strong>Steps go here...</p>
+<p><strong>Steps go here... </strong></p>
 
 
 <div class="button-container">
-<button class="generate-shoping-list">Generate Shoping list</button>
- <% if can? :destroy, @recipe%>
-<button class="add-ingredient">Add ingredient</button>
+<%= link_to 'Generate Shopping List', general_shopping_list_recipe_path(@recipe), class: 'generate-shoping-list' %> <% if can? :destroy, @recipe%>
+<button id="ingredient" class="add-ingredient">Add ingredient</button>
 <% end %>
 </div>
 <hr class="horline">
@@ -33,7 +32,7 @@
   <% @recipe.food_recipes.each do |joint_table| %>
     <tr>
       <td class="first"><%= joint_table.food.name %></td>
-      <td class="second"><%= joint_table.quantity %></td>
+      <td class="second"  ><%= joint_table.quantity %></td>
       <td class="second"><%= joint_table.quantity * joint_table.food.price%></td>
       <td class="first">
          <%= link_to 'Modify', edit_recipe_food_recipe_path(@recipe, joint_table) %>
@@ -45,7 +44,7 @@
   <% end %>
 </table>
   
-
+<div id="ingredients" class="ingredients">
 <%= form_with(model: [@recipe, FoodRecipe.new], url: recipe_food_recipes_path(@recipe)) do |f| %>  <div>
     <%= f.label :food_id %>
     <%= f.collection_select :food_id, @foods.all, :id, :name %>
@@ -56,3 +55,4 @@
   </div>
   <%= f.submit %>
 <% end %>
+</div>

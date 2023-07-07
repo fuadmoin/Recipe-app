@@ -13,8 +13,8 @@
         <% end %>
     </div>
     <div>
-        <p><%= recipe.description %></p>
-        <p>Total price: $</p>
+        <p>Total food items: <strong><%= recipe.foods.count %> </strong></p>
+        <p>Total price: $<strong><%= recipe.food_recipes.sum { |fr| fr.quantity * fr.food.price } %></strong></p>
     </div>
   </div>
 <% end %>

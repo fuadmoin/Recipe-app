@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     member do
       patch :update_public_status
     end
+    get :general_shopping_list, on: :member
   end
 
   get '/public_recipes', to: 'recipes#public_recipes'
