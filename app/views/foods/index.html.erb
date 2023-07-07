@@ -48,27 +48,27 @@
   </div>
 
   <table class="table container-fluid table-striped w-4/6 rounded-md mt-9">
-      <thead>
+    <thead>
+      <tr>
+        <th scope="col" class="food">Food</th>
+        <th scope="col" class="food">Measurement_unit</th>
+        <th scope="col" class="value">Unit price</th>
+        <th scope="col" class="value">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food|%>
         <tr>
-          <th scope="col" class="food">Food</th>
-          <th scope="col" class="food">Measurement_unit</th>
-          <th scope="col" class="value">Unit price</th>
-          <th scope="col" class="value">Actions</th>
+          <td  scope="row" ><%= food.name %></td>
+          <td class="second"><%= food.measurement_unit %></td>
+          <td class="second">$<%= food.price %></td>
+          <td class="first">
+                <%= form_with url: food_path(food) , method: :delete do %>
+                    <%= submit_tag 'Delete', class: "btn-remove text-white px-3 btn" %>
+                <% end %>      
+            </td>
         </tr>
-      </thead>
-      <tbody>
-        <% @foods.each do |food|%>
-          <tr>
-            <td  scope="row" ><%= food.name %></td>
-            <td class="second"><%= food.measurement_unit %></td>
-            <td class="second">$<%= food.price %></td>
-            <td class="first">
-                  <%= form_with url: food_path(food) , method: :delete do %>
-                      <%= submit_tag 'Delete', class: "btn-remove text-white px-3 btn" %>
-                  <% end %>      
-              </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
 </section>
