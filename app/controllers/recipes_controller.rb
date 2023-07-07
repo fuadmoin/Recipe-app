@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
     def show
         @recipe = Recipe.find(params[:id])
         @user = current_user
+        @foods = @user.foods.where.not(id: @recipe.foods)
     end
 
     def create 

@@ -23,7 +23,6 @@
 </div>
 <hr class="horline">
 </div>
-<% @joint_tables = []%>
 <table class="ingredient-table">
   <tr>
     <th class="food">Food</th>
@@ -31,17 +30,29 @@
     <th class="value">Value</th>
     <th class="food">Actions</th>
   </tr>
-  <% @joint_tables.each do |joint_table| %>
+  <% @recipe.food_recipes.each do |joint_table| %>
     <tr>
       <td class="first"><%= joint_table.food.name %></td>
       <td class="second"><%= joint_table.quantity %></td>
-      <td class="second"><%= joint_table.price %></td>
+      <td class="second"><%= joint_table.quantity * joint_table.food.price%></td>
       <td class="first">
-        <%= link_to 'Modify', edit_joint_table_path(joint_table) %>
-        <%= link_to 'Remove', joint_table, method: :delete, data: { confirm: 'Are you sure?' } %>
+         <%= link_to 'Modify', edit_recipe_food_recipe_path(@recipe, joint_table) %>
+         <%= form_with url: recipe_food_recipe_path(@recipe, joint_table), method: :delete do %>
+               <%= submit_tag 'Remove' %>
+         <% end %>
       </td>
     </tr>
   <% end %>
 </table>
+  
 
-
+<%= form_with(model: [@recipe, FoodRecipe.new], url: recipe_food_recipes_path(@recipe)) do |f| %>  <div>
+    <%= f.label :food_id %>
+    <%= f.collection_select :food_id, @foods.all, :id, :name %>
+  </div>
+  <div>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity %>
+  </div>
+  <%= f.submit %>
+<% end %>

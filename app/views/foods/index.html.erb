@@ -1,0 +1,45 @@
+
+<button id="add-food-button" class="add-food">Add Food</button>
+<div id="food-form" class= "recipe-container">
+<%= form_for([ @user.foods.build]) do |f|%>
+    <div >
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+    </div>
+    <div >
+        <%= f.label :measurement_unit %>
+        <%= f.text_field :measurement_unit %>
+    </div>
+    <div >
+        <%= f.label :price %>
+        <%= f.number_field :price %>
+    </div>
+    <div>
+        <%= f.label :quantity %>
+        <%= f.number_field :quantity %>
+    </div>
+    <div>
+        <%= f.submit %>
+    </div>
+<% end %>
+</div>
+<table class="ingredient-table">
+  <tr>
+    <th class="food">Food</th>
+    <th class="food">Measurement_unit</th>
+    <th class="value">Unit price</th>
+    <th class="value">Actions</th>
+  </tr>
+  <% @foods.each do |food|%>
+    <tr>
+      <td ><%= food.name %></td>
+      <td class="second"><%= food.measurement_unit %></td>
+      <td class="second">$<%= food.price %></td>
+      <td class="first">
+            <%= form_with url: food_path(food) , method: :delete do %>
+                <%= submit_tag 'Delete', class: "btn-remove" %>
+            <% end %>      
+        </td>
+    </tr>
+  <% end %>
+</table>
