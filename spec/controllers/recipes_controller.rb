@@ -23,7 +23,6 @@ RSpec.describe RecipesController, type: :controller do
         recipe1 = Recipe.create!(name: 'Recipe 1', user:, preparation_time: 30, cooking_time: 45)
         recipe2 = Recipe.create!(name: 'Recipe 2', user:, preparation_time: 20, cooking_time: 60)
 
-
         get :index
         expect(assigns(:recipes)).to eq([recipe1, recipe2])
       end
@@ -125,7 +124,6 @@ RSpec.describe RecipesController, type: :controller do
       expect(assigns(:recipes)).to eq([recipe1, recipe2])
     end
   end
-
 
   describe 'DELETE #destroy' do
     context 'when user is authenticated' do

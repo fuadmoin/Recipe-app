@@ -25,7 +25,6 @@ RSpec.describe 'recipes/index', type: :view do
     expect(rendered).to have_selector('.card-body p', text: 'Description 2')
   end
 
-
   it 'renders a create recipe form' do
     expect(rendered).to have_selector('.recipe-container form[action^="/recipes"][method="post"]')
     expect(rendered).to have_selector('.recipe-container form input[name="recipe[name]"]')
