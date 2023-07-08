@@ -1,0 +1,74 @@
+<%= render 'layouts/navbar' %>
+<section class="container-fluid min-h-screen bg-emerald-500 d-flex flex-col">
+  <div class="mt-24 d-flex justify-content-end w-5/6">
+    <button id="add-food-button" class="add-food btn btn-primary w-26">Add Food</button>
+  </div>
+  <div id="food-form" class= "recipe-container bg-emerald-300 w-4/6 ms-auto me-auto mt-3 rounded-md">
+    <div class=" container w-5/6 d-flex justify-content-center">
+      <%= form_for([ @user.foods.build]) do |f|%>
+          <div class="row g-3">
+              <div class="col-auto">
+                <%= f.label :name %>
+              </div>
+              <div class="col-auto">
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+          </div>
+          <div class="row g-3 mt-1">
+              <div class="col-auto">
+                <%= f.label :measurement_unit %>
+              </div>
+              <div class="col-auto">
+                <%= f.text_field :measurement_unit, class: "form-control"  %>
+              </div>
+          </div>
+          <div class="row g-3 mt-1">
+              <div class="col-auto">
+                <%= f.label :price %>
+              </div>
+              <div class="col-auto">
+                <%= f.number_field :price, class: "form-control"  %>
+              </div>
+          </div>
+          <div class="row g-3 mt-1">
+              <div class="col-auto">
+                <%= f.label :quantity %>
+              </div>
+              <div class="col-auto">
+                <%= f.number_field :quantity, class: "form-control"  %>
+              </div>
+          </div>
+          <div class="d-flex justify-content-end mt-2">
+              <div class="btn btn-primary ">
+                <%= f.submit %>
+              </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+
+  <table class="table container-fluid table-striped w-4/6 rounded-md mt-9">
+    <thead>
+      <tr>
+        <th scope="col" class="food">Food</th>
+        <th scope="col" class="food">Measurement_unit</th>
+        <th scope="col" class="value">Unit price</th>
+        <th scope="col" class="value">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food|%>
+        <tr>
+          <td  scope="row" ><%= food.name %></td>
+          <td class="second"><%= food.measurement_unit %></td>
+          <td class="second">$<%= food.price %></td>
+          <td class="first">
+                <%= form_with url: food_path(food) , method: :delete do %>
+                    <%= submit_tag 'Delete', class: "btn-remove text-white px-3 btn" %>
+                <% end %>      
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,26 @@
+<%= render 'layouts/navbar' %>
+<section class="bg-emerald-500 min-h-screen pt-4 flex flex-col items-center">
+  <h2 class="font-bold text-white text-3xl">Shopping List for <%= @recipe.name %></h2>
+
+    <table class="table container-fluid table-striped w-4/6 rounded-md mt-9">
+    <thead>
+      <tr>
+      <th class="food">Food</th>
+      <th class="value">Quantity</th>
+      <th class="value">Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recipe.food_recipes.each do |joint_table| %>
+        <tr>
+          <td class="first"><%= joint_table.food.name %></td>
+          <td class="second"><%= joint_table.quantity %></td>
+          <td class="first"><%= joint_table.quantity * joint_table.food.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <p class="mt-10">Total cost: $<strong><%= @recipe.food_recipes.sum { |fr| fr.quantity * fr.food.price } %> </strong></p>
+  <p>Amounts of items to buy: <strong><%= @recipe.foods.count%></p>
+</section>

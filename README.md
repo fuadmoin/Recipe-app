@@ -1,12 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  
-  <img src="./img/logo2.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
-  <h3><b>Title</b></h3>
-
+  <h3><b>The Recipe app</b></h3>
 </div>
 
 # 📗 Table of Contents
@@ -15,14 +10,11 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-- [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Setup](#setup)
   - [Install](#install)
   - [Usage](#usage)
   - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -30,26 +22,40 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 Math magicians <a name="about-project"></a>
+# 📖 [The Recipe app] <a name="about-project"></a>
 
-**Math magicians** is a single page app that uses api for a basic calculator.
+**[The Recipe app]** is an app that keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-- **HTML, CSS, React, and JavaScript**
+<details>
+  <summary>TailwindCSS</summary>
+  <ul>
+    <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Rails</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org">Rails</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Database</summary>
+  <ul>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+  </ul>
+</details>
 
 ### Key Features <a name="key-features"></a>
 
-- **html styled with css and javascript**
-- **uses react**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🚀 Live Demo <a name="live-demo"> </a>
-
-> Check out the live demo for this project [here.](https://fuadmoin.github.io/TODOLIST/dist/)
+- **[Keeps track of all your recipes, ingredients, and inventory]**
+- **[Create recipes]**
+- **[Generate a shopping list]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -57,89 +63,78 @@
 
 To get a local copy up and running, follow these steps.
 
-### Prerequisites <a name="prerequisites"></a>
-
-In order to run this project you need:
-
-```sh
-A Computer
-Code editor (VSCode,Atom etc...)
-A browser (Chrome,Mozilla,Safari etc...)
-Version Control System (Git and Github)
-NodeJS (https://nodejs.org/en/)
-```
-
-### Setup <a name="setup"></a>
+### Setup
 
 Clone this repository to your desired folder:
 
-```sh
-  cd my-folder
-  git https://github.com/fuadmoin/Math-magicians.git
+```
+  cd Recipe-app
+  git clone https://github.com/fuadmoin/Recipe-app.git
 ```
 
-### Install <a name="install"></a>
+### Install
 
 Install this project with:
 
-```sh
-npm install
+```
+ bundle install
 ```
 
-### Usage <a name="usage"></a>
+### Usage
+
+To run the project, execute the following command:
 
 ```
-  code .
-  npm start
+  rails server
 ```
 
-### Run tests <a name="run-tests"></a>
+### Run tests
 
-To test, run the following command:
+To run tests, run the following command:
 
-```sh
-npm test
 ```
-
-### Deployment <a name="triangular_flag_on_post-deployment"></a>
-
-You can deploy this project using Github-Page.
+  rspec spec
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 👥 Author <a name="authors"></a>
+## 👥 Authors <a name="authors"></a>
 
 👤 **Fuad Abdlemoin**
 
 - GitHub: [@fuadmoin](https://github.com/fuadmoin)
 - Twitter: [@Fuad01804580](https://twitter.com/Fuad01804580)
-- LinkedIn: [Fuad Moin](https://www.linkedin.com/in/fuad-moin-a7b126259/)
+- LinkedIn: [Fuad Moin](https://www.linkedin.com/in/fuadmoin/)
+
+👤 **Samson**
+
+- GitHub: [@githubhandle](https://github.com/SamTush)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[HTML, CSS, and Javascript will be added]**
-- [ ] **[Api will be added]**
-- [ ] **[users will be able to use the calculator]**
+- [ ] **[Improve the layout]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🤝 Contributing <a name="contributing"></a>
 
-Contributions, [issues](https://github.com/fuadmoin/Math-magicians/issues), and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/fuadmoin/Recipe-app/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project please consider starring it.
+If you like this project feel free to give a star
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-I would like to thank [Microverse](https://www.microverse.org/).
+We would like to thank Mircoverse and anyone seeing this.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
