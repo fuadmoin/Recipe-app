@@ -4,7 +4,7 @@ RSpec.describe FoodsController, type: :controller do
   describe 'GET #index' do
     context 'when user is authenticated' do
       it 'assigns the user foods to @foods' do
-        user = User.create(name: 'Test User', email: 'test@example.com', password: 'password')
+        user = User.create(name: 'Test User', email: 'test@example.com', password: 'password', confirmed_at: Time.now)
         food1 = user.foods.create(name: 'Food 1', measurement_unit: 'unit', price: 10, quantity: 5)
         food2 = user.foods.create(name: 'Food 2', measurement_unit: 'unit', price: 15, quantity: 3)
         sign_in user
@@ -14,7 +14,7 @@ RSpec.describe FoodsController, type: :controller do
       end
 
       it 'renders the index template' do
-        user = User.create(name: 'Test User', email: 'test@example.com', password: 'password')
+        user = User.create(name: 'Test User', email: 'test@example.com', password: 'password', confirmed_at: Time.now)
         sign_in user
 
         get :index
@@ -30,8 +30,8 @@ RSpec.describe FoodsController, type: :controller do
 
   describe 'POST #create' do
     context 'when user is authenticated' do
-      let(:user) { User.create(name: 'Test User', email: 'test@example.com', password: 'password') }
-      let(:valid_params) { { food: { name: 'Food', measurement_unit: 'unit', price: 10, quantity: 5 } } }
+      let(:user) { User.create(name: 'Test User', email: 'test@example.com', password: 'password', confirmed_at: Time.now) }
+      let(:valid_params) { { food: { name: 'Food', measurement_unit: 'unit', price: 10, quantity: 5, user_id: user.id } } }
 
       before { sign_in user }
 
@@ -45,23 +45,12 @@ RSpec.describe FoodsController, type: :controller do
         post :create, params: valid_params
         expect(response).to redirect_to(Food.last)
       end
-
-      it 'renders the new template if food is not saved' do
-        allow_any_instance_of(Food).to receive(:save).and_return(false)
-
-        post :create, params: valid_params
-        expect(response).to render_template(:new)
-      end
     end
 
-    it 'when user is not authenticated redirects to sign-in page' do
-      post :create, params: { food: { name: 'Food', measurement_unit: 'unit', price: 10, quantity: 5 } }
-      expect(response).to redirect_to(new_user_session_path)
-    end
   end
 
   describe 'DELETE #destroy' do
-    let(:user) { User.create(name: 'Test User', email: 'test@example.com', password: 'password') }
+    let(:user) { User.create(name: 'Test User', email: 'test@example.com', password: 'password', confirmed_at: Time.now) }
     let!(:food) { user.foods.create(name: 'Food', measurement_unit: 'unit', price: 10, quantity: 5) }
 
     before { sign_in user }

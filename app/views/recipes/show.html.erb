@@ -38,7 +38,7 @@
       <td class="second"  ><%= joint_table.quantity %></td>
       <td class="second"><%= joint_table.quantity * joint_table.food.price%></td>
       <td class="first">
-         <%= link_to 'Modify', edit_recipe_food_recipe_path(@recipe, joint_table) %>
+         <%= link_to 'Modify', edit_recipe_food_recipe_path(@recipe, joint_table.id) %>
          <%= form_with url: recipe_food_recipe_path(@recipe, joint_table), method: :delete do %>
                <%= submit_tag 'Remove' %>
          <% end %>

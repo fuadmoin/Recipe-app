@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     end
 
     def show
-        @recipe = Recipe.find(params[:id])
+        @recipe = Recipe.includes(food_recipes: :food).find(params[:id])
         @user = current_user
         @foods = @user.foods.where.not(id: @recipe.foods)
     end
@@ -30,7 +30,7 @@ class RecipesController < ApplicationController
     end
 
     def public_recipes
-        @recipes = Recipe.where(public: true)
+        @recipes = Recipe.includes(:user).where(public: true)
     end
 
     def general_shopping_list

@@ -17,6 +17,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :view
 end
 
 Capybara.javascript_driver = :selenium_chrome

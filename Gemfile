@@ -44,7 +44,7 @@ gem 'bootsnap', require: false
 gem 'cancancan'
 gem 'devise'
 gem 'kaminari'
-
+gem 'bullet'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
