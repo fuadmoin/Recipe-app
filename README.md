@@ -22,7 +22,6 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-
 # 📖 [The Recipe app] <a name="about-project"></a>
 
 **[The Recipe app]** is an app that keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
@@ -101,11 +100,11 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-👤 **FuadMoin**
+👤 **Fuad Abdlemoin**
 
-- GitHub: [@githubhandle](https://github.com/fuadmoin)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@fuadmoin](https://github.com/fuadmoin)
+- Twitter: [@Fuad01804580](https://twitter.com/Fuad01804580)
+- LinkedIn: [Fuad Moin](https://www.linkedin.com/in/fuadmoin/)
 
 👤 **Samson**
 
@@ -129,7 +128,7 @@ Feel free to check the [issues page](https://github.com/fuadmoin/Recipe-app/issu
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project feel free to give a star 
+If you like this project feel free to give a star
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -141,6 +140,6 @@ We would like to thank Mircoverse and anyone seeing this.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
