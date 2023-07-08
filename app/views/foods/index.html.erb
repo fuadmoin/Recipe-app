@@ -1,0 +1,53 @@
+<%= render 'layouts/navbar' %>
+<section class="container-fluid h-screen bg-emerald-500 d-flex flex-col justify-content-center">
+  <div class="mt-9 d-flex justify-content-end w-5/6">
+    <button id="add-food-button" class="add-food btn btn-primary w-26">Add Food</button>
+  </div>
+  <div id="food-form" class= "recipe-container">
+    <div class=" container w-5/6 d-flex justify-content-center">
+      <%= form_for([ @user.foods.build]) do |f|%>
+          <div >
+              <%= f.label :name %>
+              <%= f.text_field :name %>
+          </div>
+          <div >
+              <%= f.label :measurement_unit %>
+              <%= f.text_field :measurement_unit %>
+          </div>
+          <div >
+              <%= f.label :price %>
+              <%= f.number_field :price %>
+          </div>
+          <div>
+              <%= f.label :quantity %>
+              <%= f.number_field :quantity %>
+          </div>
+          <div class="d-flex justify-content-end">
+              <div class="btn btn-primary ">
+                <%= f.submit %>
+              </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+  <table class="ingredient-table container w-4/6">
+    <tr>
+      <th class="food">Food</th>
+      <th class="food">Measurement_unit</th>
+      <th class="value">Unit price</th>
+      <th class="value">Actions</th>
+    </tr>
+    <% @foods.each do |food|%>
+      <tr>
+        <td ><%= food.name %></td>
+        <td class="second"><%= food.measurement_unit %></td>
+        <td class="second">$<%= food.price %></td>
+        <td class="first">
+              <%= form_with url: food_path(food) , method: :delete do %>
+                  <%= submit_tag 'Delete', class: "btn-remove" %>
+              <% end %>      
+          </td>
+      </tr>
+    <% end %>
+  </table>
+</section>
