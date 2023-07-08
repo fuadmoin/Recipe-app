@@ -15,4 +15,6 @@ Rails.application.routes.draw do
     end
     get :general_shopping_list, on: :member
   end
+
+  get '/public_recipes', to: 'recipes#public_recipes'
 end
