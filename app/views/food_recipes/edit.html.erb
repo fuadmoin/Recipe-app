@@ -1,0 +1,20 @@
+<%= render 'layouts/navbar' %>
+<section class="bg-emerald-500 min-h-screen pt-10 px-20 container-fliud flex justify-center">
+  <div class="bg-emerald-300 px-10 py-6 w-fit h-fit">
+    <%= form_with(model: [@recipe, @food_recipe], url: recipe_food_recipe_path(@recipe, @food_recipe), method: :patch) do |f| %>
+      <div>
+        <div class="row">
+          <div class="col-auto">
+            <%= f.label :quantity %>
+          </div>
+          <div class="col-auto">
+            <%= f.number_field :quantity, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+      <div class="btn btn-light mt-3 flex justify-center">
+        <%= f.submit %>
+ </div>
+<% end %>
+  </div>
+</section>
