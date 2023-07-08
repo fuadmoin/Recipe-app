@@ -27,10 +27,6 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
-  def general_shopping_list
-    @recipe = Recipe.find(params[:id])
-  end
-
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
