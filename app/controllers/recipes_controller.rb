@@ -27,6 +27,10 @@ class RecipesController < ApplicationController
     redirect_to @recipe
   end
 
+  def public_recipes
+    @recipes = Recipe.includes(:user).where(public: true)
+  end
+
   def general_shopping_list
     @recipe = Recipe.find(params[:id])
   end

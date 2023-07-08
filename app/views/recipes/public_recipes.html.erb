@@ -1,0 +1,21 @@
+<%= render 'layouts/navbar' %>
+<% @recipes.each do |recipe| %>
+  <div class="recipe">
+    <div class="title-remove">
+        <h2><%= link_to recipe.name, recipe %></h2>
+        <small class="author">by <%= recipe.user.name%></small>
+        <% if can? :destroy, recipe %>
+            <%= form_with url: recipe_path(recipe) , method: :delete do %>
+                <%= submit_tag 'Remove', class: "btn-remove" %>
+            <% end %>
+            <%= form_with model: recipe, url: update_public_status_recipe_path(recipe), method: :patch do |f| %>
+                <%= submit_tag 'Make Private', class: "btn-remove btn-private" %>
+            <% end %>
+        <% end %>
+    </div>
+    <div>
+        <p>Total food items: <strong><%= recipe.foods.includes(:food).count %></strong></p>
+        <p>Total price: $<strong><%= recipe.food_recipes.includes(:food).sum { |fr| fr.quantity * fr.food.price } %></strong></p>
+    </div>
+  </div>
+<% end %>
