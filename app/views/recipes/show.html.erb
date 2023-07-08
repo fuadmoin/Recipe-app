@@ -1,57 +1,83 @@
 <%= render 'layouts/navbar' %>
-<h2 class="details-header"> <%= @recipe.name%> </h2>
-<div class="details-container">
-<div class="preparation-public">
-<p>Preparation time:<strong> <%= @recipe.preparation_time%>  minutes </strong></p>
-<%if can? :destroy, @recipe%>
-    <%= form_with model: @recipe, url: update_public_status_recipe_path(@recipe), method: :patch do |f| %>
-    <small class="public-switch">Public</small>
-    <label class="switch">
-        <%= f.check_box :public, onchange: 'this.form.submit()' %>
-        <span class="slider round"></span>
-    </label>
-    <% end %>
-<% end %>
-</div> <br>
-<p>Cooking time: <strong><%= @recipe.cooking_time%> minutes </strong></p> <br>
-<p><strong>Steps go here... </strong></p>
-<div class="button-container">
-<%= link_to 'Generate Shopping List', general_shopping_list_recipe_path(@recipe), class: 'generate-shoping-list' %> <% if can? :destroy, @recipe%>
-<button id="ingredient" class="add-ingredient">Add ingredient</button>
-<% end %>
-</div>
-<hr class="horline">
-</div>
-<table class="ingredient-table">
-  <tr>
-    <th class="food">Food</th>
-    <th class="value">Quantity</th>
-    <th class="value">Value</th>
-    <th class="food">Actions</th>
-  </tr>
-  <% @recipe.food_recipes.each do |joint_table| %>
-    <tr>
-      <td class="first"><%= joint_table.food.name %></td>
-      <td class="second"  ><%= joint_table.quantity %></td>
-      <td class="second"><%= joint_table.quantity * joint_table.food.price%></td>
-      <td class="first">
-         <%= link_to 'Modify', edit_recipe_food_recipe_path(@recipe, joint_table.id) %>
-         <%= form_with url: recipe_food_recipe_path(@recipe, joint_table), method: :delete do %>
-               <%= submit_tag 'Remove' %>
-         <% end %>
-      </td>
-    </tr>
+<section class="bg-emerald-500 min-h-screen pt-4 flex flex-col items-center">
+  <h2 class="details-header text-white text-4xl"> <%= @recipe.name%> </h2>
+  <div class="details-container text-white ">
+    <div class="preparation-public">
+      <p>Preparation time:<strong> <%= @recipe.preparation_time%>  minutes </strong></p>
+      <%if can? :destroy, @recipe%>
+          <%= form_with model: @recipe, url: update_public_status_recipe_path(@recipe), method: :patch do |f| %>
+          <small class="public-switch">Public</small>
+          <label class="switch">
+              <%= f.check_box :public, onchange: 'this.form.submit()' %>
+              <span class="slider round"></span>
+          </label>
+          <% end %>
+      <% end %>
+    </div> <br>
+    <p>Cooking time: <strong><%= @recipe.cooking_time%> minutes </strong></p> <br>
+    <p><strong>Steps go here... </strong></p>
+  <div class="button-container">
+  <%= link_to 'Generate Shopping List', general_shopping_list_recipe_path(@recipe), class: 'generate-shoping-list' %> <% if can? :destroy, @recipe%>
+  <button id="ingredient" class="add-ingredient">Add ingredient</button>
   <% end %>
-</table>
-<div id="ingredients" class="ingredients">
-<%= form_with(model: [@recipe, FoodRecipe.new], url: recipe_food_recipes_path(@recipe)) do |f| %>  <div>
-    <%= f.label :food_id %>
-    <%= f.collection_select :food_id, @foods.all, :id, :name %>
   </div>
-  <div>
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
+  <hr class="horline">
   </div>
-  <%= f.submit %>
-<% end %>
-</div>
+  <table class="table container-fluid table-striped w-4/6 rounded-md mt-9">
+    <thead>
+      <tr>
+        <th class="food">Food</th>
+        <th class="value">Quantity</th>
+        <th class="value">Value</th>
+         <% if can? :destroy, @recipe%>
+        <th class="food">Actions</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+        <% @recipe.food_recipes.each do |joint_table| %>
+      <tr>
+        <td class="first"><%= joint_table.food.name %></td>
+        <td class="second"  ><%= joint_table.quantity %></td>
+        <td class="second"><%= joint_table.quantity * joint_table.food.price%></td>
+         <% if can? :destroy, @recipe%>
+        <td class="first">
+                  <div class="flex ">
+                  <%= link_to 'Modify', edit_recipe_food_recipe_path(@recipe, joint_table.id), class: 'me-4' %>
+                  <%= form_with url: recipe_food_recipe_path(@recipe, joint_table), method: :delete do %>
+                        <%= submit_tag 'Remove' %>
+                  </div>
+                  <% end %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <div id="ingredients" class="ingredients bg-emerald-300 w-98">
+    <div class="p-10">
+      <%= form_with(model: [@recipe, FoodRecipe.new], url: recipe_food_recipes_path(@recipe)) do |f| %>  <div>
+          <div class="row mt-3 w-full">
+              <div class="col-auto">
+                <%= f.label :food_id %>
+              </div>
+              <div class="col-auto">
+                <%= f.collection_select :food_id, @foods.all, :id, :name %>
+              </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+              <div class="col-auto">
+                <%= f.label :quantity %>
+              </div>
+              <div class="col-auto">
+                <%= f.number_field :quantity %>
+              </div>
+          </div>
+          <div  class="btn bg-emerald-800 text-white mt-3">
+            <%= f.submit%>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</section>

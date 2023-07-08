@@ -45,7 +45,6 @@
 .details-header {
   font-size: 2rem;
   font-weight: bold;
-  margin: 2rem 0 1rem 25rem;
 }
 
 .details-container {
@@ -186,10 +185,7 @@ input:checked + .slider::before {
 }
 
 .btn-remove {
-  border: solid 1px rgb(148, 111, 111);
   cursor: pointer;
-  font-size: medium;
-  padding: 1px;
   color: rgb(223, 217, 217);
   background-color: red !important;
 }
@@ -198,6 +194,7 @@ input:checked + .slider::before {
   background-color: cadetblue !important;
 }
 
+/* Foods */
 #food-form {
   display: none;
 }
