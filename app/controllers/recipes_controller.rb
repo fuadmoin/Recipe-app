@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :authenticate_user!, only: %i[index]
+
   def index
     @recipes = Recipe.all
     @user = current_user
@@ -14,6 +15,7 @@ class RecipesController < ApplicationController
   def create
     @user = current_user
     @recipe = @user.recipes.build(post_params)
+
     if @recipe.save
       redirect_to @recipe
     else
@@ -28,7 +30,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.includes(:user).where(public: true)
+    @recipes = Recipe.includes(:user, food_recipes: :food).where(public: true)
   end
 
   def general_shopping_list

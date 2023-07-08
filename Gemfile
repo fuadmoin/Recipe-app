@@ -41,10 +41,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
+gem 'bullet'
 gem 'cancancan'
 gem 'devise'
 gem 'kaminari'
-
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -52,6 +52,9 @@ gem 'kaminari'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
 end
@@ -66,10 +69,11 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+gem 'rails-controller-testing'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
+
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
