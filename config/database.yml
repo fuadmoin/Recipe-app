@@ -19,7 +19,7 @@ default: &default
   encoding: unicode
   pool: 5
   username: postgres
-  password: cocacct#2
+  password: <%= Rails.application.credentials.dig(:development, :database_password) %>
 
 development:
   <<: *default
