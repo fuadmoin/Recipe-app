@@ -80,4 +80,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  <<: *default
+  host: <%= Rails.application.credentials.dig(:production, :db, :host) %>
+  port: <%= Rails.application.credentials.dig(:production, :db, :port) %>
+  database: <%= Rails.application.credentials.dig(:production, :db, :name) %>
+  username: <%= Rails.application.credentials.dig(:production, :db, :username) %>
+  password: <%= Rails.application.credentials.dig(:production, :db, :password) %>
