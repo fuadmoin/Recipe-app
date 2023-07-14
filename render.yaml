@@ -3,9 +3,10 @@ databases:
     ipAllowList: []
     databaseName: mysite
     user: mysite
+
 services:
   - type: web
-    name: mysite
+    name: rails
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec rails"
