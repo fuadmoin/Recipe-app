@@ -7,7 +7,7 @@ databases:
 
 services:
   - type: web
-    name: recipe
+    name: recipes
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec rails"
